@@ -1,32 +1,57 @@
-<!DOCTYPE html>
-<html>
+<html manifest="nano.cache">
+    
 <head>
-<title>[ PS4 MANDRAKE v9.00 ]</title>
-<style>
-html{margin:0px;}
-body{background-color:#1849A5;background:url("BG1.jpg");background-size:cover;background-repeat:no-repeat;color:#DDE5EA;font-family:sans-serif;font-size:22px;overflow:hidden;cursor:none;margin:0px;}
-</style>
-<link rel="stylesheet" href="../style.css">
-<script src="int64.js"></script>
-<script src="rop.js"></script>
-<script src="kexploit.js"></script>
-<script src="webkit.js"></script>
-</head>
-<body onLoad="setTimeout(poc, 50);">
-<div align="center">
-  <script>
+    <title>[ PS4 MANDRAKE v9.00 ]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body 
+        {
+            background-image: url("host.jpg");
+            height: 80%;
+            background-position: center;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+       
+        @keyframes spin 
+        {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .info 
+        {
+            overflow: hidden;
+            position: fixed;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            font-size: 45px;
+            font-family: sans-serif;
+            color: #d40606;
+
+            transform: translate(-50%, -50%);
+        }
+
+        .j {
+            font-size: 15px;
+            color: #d40606;
+        }
+    </style>
+<script>
 if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
 </script>
-  
-  <br>
-</div>
-<div align="center">
-  <script>
-function allset(){
-msgs.innerHTML = LoadedMSG
-}
-
-function load_poc(){
+<script>
+ PLfile = "goldhen.bin";
+ function load_pocB(){
  var req = new XMLHttpRequest();
  req.responseType = "arraybuffer";
  req.open('GET', PLfile);
@@ -48,13 +73,29 @@ function load_poc(){
   }
  };
 }
-
-function jbdone(){
-LoadedMSG = "";
-PLfile = "goldhen_2.4b16.2.bin";
-setTimeout(load_poc, 500);
+function jbdone() {
+window.progress.innerHTML="Jailbreak hecho";
+goldhen();
 }
+function goldhen(){
+    progress.innerHTML="Cargando... por favor espere";
+    load_pocB();
+}
+        function allset() 
+        {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("allset").style.display = "block";
+        }
 </script>
-</div>
+<script src="./int64.js"></script>
+<script src="./rop.js"></script>
+<script src="./kexploit.js"></script>
+<script type=module src="./alert.mjs"></script>
+</head>
+
+<body>
+    <h1 id=progress style='font-size:25px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;'></h1><br>
+        <div id="allset" class="info" style="display:none;font-size:30px;text-align:center;text-shadow: 4px 4px 4px black;color:yellow;">Liberacion completada. Cierra el Navegador!</div>
 </body>
+
 </html>
